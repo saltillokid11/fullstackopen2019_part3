@@ -3,7 +3,9 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const morgan = require('morgan');
+const morgan = require('morgan')
+const cors = require('cors')
+
 
 const requestLogger = (request, response, next) => {
     console.log('Method:', request.method)
@@ -16,6 +18,8 @@ const requestLogger = (request, response, next) => {
 app.use(bodyParser.json());
 app.use(cors());
 app.use(requestLogger);
+app.use(cors());
+
 
 morgan.token('body', (req) => {
     return JSON.stringify(req.body)
